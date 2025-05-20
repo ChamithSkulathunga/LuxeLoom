@@ -1,5 +1,6 @@
 import React from 'react'
 import { features } from '../data'
+import { motion } from "motion/react"
 
 const Features = () => {
 
@@ -7,21 +8,37 @@ const Features = () => {
   const { title, subtitle, image, items} = features; 
 
   return (
-    <section id="features" className='section'>
+    <section id="features" className='section'
+    
+    >
      <div className='container mx-auto'>
        <div className='flex flex-col lg:flex-row lg:gap-x-[100px]'>
         {/* image */}
-        <div className='flex-1 order-1 lg:-order-1'>
-          <img src={image.type} alt='' />
-        </div>
+        <motion.div className='flex-1 order-1 lg:-order-1'
+        initial={{y: -20, opacity: 0}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{duration: 0.9, delay: 0.2}}
+        >
+          <img src={image.type} alt=''
+           
+          />
+        </motion.div>
 
         {/* text */}
-        <div className='flex-1 flex flex-col justify-end'>
+        <motion.div className='flex-1 flex flex-col justify-end'
+        initial={{y: -20, opacity: 0}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{duration: 0.9, delay: 0.3}}
+        >
           <h2 className='title'>{title}</h2>
           <p className='subtitle'>{subtitle}</p>
           
           {/* items */}
-          <div>
+          <motion.div
+          initial={{y: -20, opacity: 0}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{duration: 0.9, delay: 0.6}}
+          >
             {items.map((item, index) => {
                 // destructure items
                 const {title, subtitle, icon} = item;
@@ -36,9 +53,9 @@ const Features = () => {
                   </div>
                 )
             })}
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
 
       </div>
      </div>

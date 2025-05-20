@@ -8,6 +8,7 @@ const Header = () => {
   const [bg, setBg] = useState(false)
   const [mobileNav, setMobileNav] = useState(false)
 
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -16,6 +17,7 @@ const Header = () => {
         setBg(false)
       }
     }
+
 
     window.addEventListener('scroll', handleScroll)
 
@@ -61,7 +63,7 @@ const Header = () => {
               mobileNav ? 'left-0' : '-left-full'
             } md:hidden fixed bottom-0 w-full max-w-xs h-screen transition-all`}
           >
-            <NavMobile />
+            <NavMobile closeMobileNav={() => setMobileNav(false)} />
           </div>
         </div>
       </div>
